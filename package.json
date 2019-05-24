@@ -30,5 +30,8 @@
   },
   "devDependencies": {
     "semantic-release": "^15.13.12"
+  },
+  "release": {
+    "repositoryUrl": "https://github.com/RobynDalgleish/js-auto-versioning.git"
   }
 }

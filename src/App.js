@@ -16,7 +16,32 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          install semantic-release library as a dev dependency (npm install -D semantic-release)
+          Configure CI:
+            hook project up to circleci
+            make sure you have a .circleci/config.yml file in root directory
+              example:
+          version: 2
+          jobs:
+            release:
+              docker:
+                - image: circleci/node:8
+              steps:
+                - checkout
+                - run: npm install
+                # Run optional required steps before releasing
+                # - run: npm run build-script
+                - run: npx semantic-release
+
+          workflows:
+            version: 2
+            test_and_release:
+              # Run the test jobs first, then the release only when all the test jobs are successful
+              jobs:
+                - release
+
+          Add GH_TOKEN GIT_CREDENTIALS and NPM_TOKENin circleci project settings
+        
         </a>
       </header>
     </div>
